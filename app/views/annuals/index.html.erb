@@ -6,7 +6,7 @@
 
 <% for annual in @annuals %>
   <tr>
-    <td><%= annual.type %></td>
+    <td><%= annual.annualType %></td>
     <td><%= link_to 'Show', profile_annual_path(@profile, annual)
 		 %></td>
     <td><%= link_to 'Edit', edit_profile_annual_path(@profile, annual)

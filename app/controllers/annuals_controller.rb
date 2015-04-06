@@ -1,4 +1,5 @@
 class AnnualsController < ApplicationController
+  before_filter :authenticate_user!
 
 # GET /profiles/1/annuals
   def index
@@ -35,7 +36,7 @@ class AnnualsController < ApplicationController
     # For URL like /profiles/1/annuals
     # Populate an annual associate with profile 1 with form data
     # profile will be associated with the annual
-    @annual = @profile.annuals.build(params.require(:annual).permit(:description, :date))
+    @annual = @profile.annuals.build(params.require(:annual).permit(:annualType, :date))
     if @annual.save
       # Save the annual successfully
       redirect_to profile_annual_url(@profile, @annual)
@@ -57,7 +58,7 @@ class AnnualsController < ApplicationController
   def update
     @profile = Profile.find(params[:profile_id])
     @annual = Annual.find(params[:id])
-    if @annual.update_attributes(params.require(:annual).permit(:description, :date))
+    if @annual.update_attributes(params.require(:annual).permit(:annualType, :date))
       # Save the annual successfully
       redirect_to profile_annual_url(@profile, @annual)
     else

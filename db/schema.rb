@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406101341) do
+ActiveRecord::Schema.define(version: 20150406110616) do
 
   create_table "annuals", force: :cascade do |t|
-    t.string   "type"
+    t.string   "annualType"
     t.datetime "date"
     t.integer  "profile_id"
     t.datetime "created_at", null: false
