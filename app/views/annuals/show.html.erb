@@ -1,0 +1,12 @@
+
+<h1>Annual Leave Request for <%= @profile.firstname %></h1>
+<p>
+  <b>Annual Type:</b>
+  <%= @annual.type %>
+</p>
+<p>
+  <b>annual date:</b>
+  <%= @annual.date %>
+</p>
+<%= link_to 'Edit', edit_profile_annual_path(@profile, @annual) %> |
+<%= link_to 'Back', profile_annuals_path(@profile) %>

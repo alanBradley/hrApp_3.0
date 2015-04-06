@@ -1,0 +1,22 @@
+<h1>Annual Leave Requests for <%= @profile.firstname %></h1>
+<table>
+  <tr>
+    <th>annual type</th>
+  </tr>
+
+<% for annual in @annuals %>
+  <tr>
+    <td><%= annual.type %></td>
+    <td><%= link_to 'Show', profile_annual_path(@profile, annual)
+		 %></td>
+    <td><%= link_to 'Edit', edit_profile_annual_path(@profile, annual)
+		 %></td>
+    <td><%= link_to 'Destroy', profile_annual_path(@profile, annual), 
+		:confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= link_to 'New annual', new_profile_annual_path(@profile) %>
+<%= link_to 'Back to profile', @profile %>

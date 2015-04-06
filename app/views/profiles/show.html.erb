@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @profile.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @profile.lastname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @profile.phone %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @profile.department %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user %>
+</p>
+
+<!-- Display the annuals of a profile -->
+<h2>Employee's annual leave requests</h2>
+<% @profile.annuals.each do |annual| %>
+<p>
+<b>Annual leave request details:</b>
+<%= annual.details %>
+</p>
+<% end %>
+<%= link_to 'Show annuals', profile_annuals_path(@profile) %>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
