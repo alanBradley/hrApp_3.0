@@ -35,7 +35,7 @@
 <% @profile.annuals.each do |annual| %>
 <p>
 <b>Annual leave request details:</b>
-<%= annual.details %>
+<%= annual.annualType %>
 </p>
 <% end %>
 <%= link_to 'Show annuals', profile_annuals_path(@profile) %>
