@@ -6,7 +6,7 @@
 </p>
 <p>
   <b>annual date:</b>
-  <%= @annual.date %>
+  <%= @annual.date.strftime("%a%m/%d/%Y")  %>
 </p>
 <%= link_to 'Edit', edit_profile_annual_path(@profile, @annual) %> |
 <%= link_to 'Back', profile_annuals_path(@profile) %>

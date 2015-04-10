@@ -16,6 +16,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   def new
     @profile = Profile.new
+    @profile.user_id = current_user.id
+  
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @profile }
+    end
   end
 
   # GET /profiles/1/edit
@@ -59,6 +65,17 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  # Method for signedinuserprofile - If user is signed in then bring them to their profile else bring them to a new profile
+  def signedinuserprofile
+    profile = Profile.find_by_user_id(current_user.id)
+    if profile.nil?
+      redirect_to "/profiles/new"
+    else
+      @profile = Profile.find_by_user_id(current_user.id)
+      redirect_to "/profiles/#{@profile.id}"
     end
   end
 
