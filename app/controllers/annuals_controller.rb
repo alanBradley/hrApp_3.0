@@ -8,8 +8,13 @@ class AnnualsController < ApplicationController
     @profile = Profile.find(params[:profile_id])
 
     # Access all annuals for that profile
-    @annuals = @profile.annuals
+    @annuals = @profile.annuals.all
   end
+  
+  def allann
+     @annuals = Annual.all.order("created_at DESC")
+  end
+   
 
   # GET /profiles/1/annuals/2
   def show
