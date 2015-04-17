@@ -1,4 +1,6 @@
+<h1> Holiday requests</h1>
 <% @annuals.each do |annual| %>
+    <%= image_tag annual.profile.avatar.url(:medium) %>
     <td><%= annual.annualType %></td><br />
 <% end %>
     

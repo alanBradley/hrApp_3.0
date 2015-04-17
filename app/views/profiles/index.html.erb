@@ -27,8 +27,10 @@
         <td><%= profile.user_id %></td>
           <tr>
             <td><%= link_to 'Show', profile %>
-            <%= link_to 'Edit', edit_profile_path(profile) %>
-            <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if current_user.admin? %>
+              <%= link_to 'Edit', edit_profile_path(profile) %>
+              <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
             </td>
           </tr>
       </tr>
