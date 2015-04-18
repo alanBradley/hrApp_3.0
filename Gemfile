@@ -30,6 +30,10 @@ gem 'paperclip', '~> 4.2.1'
 # added searchkick for search functionality
 gem 'searchkick', '~> 0.8.7'
 
+# added bootstrap for design
+gem 'bootstrap-sass', '~> 3.3.4.1'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
