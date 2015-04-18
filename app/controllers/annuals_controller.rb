@@ -11,8 +11,10 @@ class AnnualsController < ApplicationController
     @annuals = @profile.annuals.all
   end
   
+    # Acceess all annuals for all profiles (Admin level)
+    # URL /allann
   def allann
-     @annuals = Annual.all.order("created_at DESC")
+     @annuals = Annual.all.order("approval ASC")
   end
    
 
@@ -41,7 +43,7 @@ class AnnualsController < ApplicationController
     # For URL like /profiles/1/annuals
     # Populate an annual associate with profile 1 with form data
     # profile will be associated with the annual
-    @annual = @profile.annuals.build(params.require(:annual).permit(:annualType, :date))
+    @annual = @profile.annuals.build(params.require(:annual).permit(:annualType, :date, :approval))
     if @annual.save
       # Save the annual successfully
       redirect_to profile_annual_url(@profile, @annual)
@@ -63,7 +65,7 @@ class AnnualsController < ApplicationController
   def update
     @profile = Profile.find(params[:profile_id])
     @annual = Annual.find(params[:id])
-    if @annual.update_attributes(params.require(:annual).permit(:annualType, :date))
+    if @annual.update_attributes(params.require(:annual).permit(:annualType, :date, :approval))
       # Save the annual successfully
       redirect_to profile_annual_url(@profile, @annual)
     else

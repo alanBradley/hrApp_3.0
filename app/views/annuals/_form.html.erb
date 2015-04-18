@@ -16,11 +16,16 @@
   	<p>
     <%= f.label :date %><br />
     <%= f.date_field :date %>
-  </p>
+    </p>
    	<p>
     <%= f.label :annualType %><br />
     <%= f.text_field :annualType %>
-  </p>
+    </p>
+    <p>
+    <%= f.label :approval %><br />
+    <%= f.check_box :approval %>
+    </p>
+  
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417191433) do
+ActiveRecord::Schema.define(version: 20150417203749) do
 
   create_table "annuals", force: :cascade do |t|
     t.string   "annualType"
     t.datetime "date"
     t.integer  "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "approval",   default: false
   end
 
   add_index "annuals", ["profile_id"], name: "index_annuals_on_profile_id"

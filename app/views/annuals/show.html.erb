@@ -8,5 +8,13 @@
   <b>annual date:</b>
   <%= @annual.date.strftime("%a%m/%d/%Y")  %>
 </p>
+<p>
+<b>Status:</b>
+  <% if @annual.approval == true %>
+      Approved
+  <% else %>
+      Pending
+  <%end%>
+</p>
 <%= link_to 'Edit', edit_profile_annual_path(@profile, @annual) %> |
 <%= link_to 'Back', profile_annuals_path(@profile) %>
