@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
   resources :profiles do
+    collection do
+      get 'search'
+    end
     resources :annuals do
       get 'allann'
     end
