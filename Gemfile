@@ -27,6 +27,9 @@ gem 'devise', '~> 3.4.1'
 # added paperclip for user profile pics
 gem 'paperclip', '~> 4.2.1'
 
+# added searchkick for search functionality
+gem 'searchkick', '~> 0.8.7'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
