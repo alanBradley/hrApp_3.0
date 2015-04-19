@@ -8,7 +8,7 @@ class AnnualsController < ApplicationController
     @profile = Profile.find(params[:profile_id])
 
     # Access all annuals for that profile
-    @annuals = @profile.annuals.all
+    @annuals = @profile.annuals.all.order("date ASC")
   end
   
     # Acceess all annuals for all profiles (Admin level)
@@ -46,7 +46,7 @@ class AnnualsController < ApplicationController
     @annual = @profile.annuals.build(params.require(:annual).permit(:annualType, :date, :approval))
     if @annual.save
       # Save the annual successfully
-      redirect_to profile_annual_url(@profile, @annual)
+      redirect_to profile_annuals_url(@profile)
     else
       render :action => "new"
     end
@@ -67,7 +67,7 @@ class AnnualsController < ApplicationController
     @annual = Annual.find(params[:id])
     if @annual.update_attributes(params.require(:annual).permit(:annualType, :date, :approval))
       # Save the annual successfully
-      redirect_to profile_annual_url(@profile, @annual)
+      redirect_to profile_annuals_url(@profile)
     else
       render :action => "edit"
     end

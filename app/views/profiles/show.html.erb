@@ -35,21 +35,19 @@
       <!-- navbar design for show pages -->
       <%= render 'navbar' %>
 
-      <!-- Main component for a primary marketing message or call to action -->
+      <!-- Left col -->
       <div class="col-sm-4">
-        <% if user_signed_in? == @profile.user %>
+        <% if current_user == @profile.user %>
           <h1> Welcome <%= @profile.firstname %> </h1>
             <% else %>
               <h3><%= @profile.firstname %><%= @profile.lastname %></h3>
             <% end %>
         <p><%= image_tag @profile.avatar.url(:medium) %></p>
-        <p>
-          <a class="btn btn-lg btn-default" href="../../components/#navbar" role="button">Book Holiday &raquo;</a>
-        </p>
       </div>
 
+      <!-- Right col -->
       <div class="col-sm-8">
-        <h1> Name and all that </h1>
+        <h1> Profile Details </h1>
         <p> Trying to get some either<br> a) Name details and stuff or <br>
           b) list of holidays applied for here
         </p>
@@ -81,6 +79,12 @@
         <p>
         <strong>User:</strong>
         <%= @profile.user_id %>
+        </p>
+        <p>
+          <% if current_user == @profile.user %>
+          <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-lg btn-default"%> 
+          <%= link_to 'Delete Profile', profile_path(@profile), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-lg btn-default" %>
+          <% end %>
         </p>
 
       </div>

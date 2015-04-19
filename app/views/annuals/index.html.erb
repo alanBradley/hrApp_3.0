@@ -1,22 +1,39 @@
-<h1>Annual Leave Requests for <%= @profile.firstname %></h1>
-<table>
-  <tr>
-    <th>annual type</th>
-  </tr>
 
-<% for annual in @annuals %>
-  <tr>
-    <td><%= annual.annualType %></td>
-    <td><%= link_to 'Show', profile_annual_path(@profile, annual)
-		 %></td>
-    <td><%= link_to 'Edit', edit_profile_annual_path(@profile, annual)
-		 %></td>
-    <td><%= link_to 'Destroy', profile_annual_path(@profile, annual), 
-		:confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<br />
+<div class="container">
 
-<%= link_to 'New Annual', new_profile_annual_path(@profile) %>
-<%= link_to 'Back to profile', @profile %>
+  <%= render 'navbar' %>
+  <h1>Annual Leave Requests for <%= @profile.firstname %></h1>
+  
+  <table class="table table-striped">
+    <tr>
+      <th>HOLIDAY DESCRIPTION</th>
+      <th>DATE</th>
+      <th>STATUS</th>
+      <th>EDIT</th>
+      <th>DESTROY</th>
+    </tr>
+
+    <% for annual in @annuals %>
+      <tr>
+        <td><%= annual.annualType %></td>
+        <td><%= annual.date.strftime("%v") %></td>   
+        <td>
+            <% if annual.approval == true %>
+              Approved
+            <% else %>
+              Pending
+            <%end%>
+        </td>
+        <td><%= link_to 'Edit', edit_profile_annual_path(@profile, annual)
+    		 %></td>
+        <td><%= link_to 'Destroy', profile_annual_path(@profile, annual), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+
+<!--
+  <%= link_to 'New Annual', new_profile_annual_path(@profile) %>
+  <%= link_to 'Back to profile', @profile %>
+-->
+</div>

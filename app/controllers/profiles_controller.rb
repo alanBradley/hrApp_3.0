@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_filter :ensure_admin, :only => [:edit, :destroy]
+  before_filter :ensure_admin, :only => [:destroy]
 
   # GET /profiles
   # GET /profiles.json
