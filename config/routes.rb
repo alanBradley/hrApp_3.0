@@ -17,8 +17,14 @@ Rails.application.routes.draw do
   # The get action routes the user to their profile if already registered. 
   get '/signedinuserprofile' => 'profiles#signedinuserprofile'
   
+  # the get action to route the user to all holidays requests by all users
   get '/allann' => 'annuals#allann'
+
+    # the get action to route the user to all holidays requests by all users
+  get '/pending' => 'annuals#pending'
   
+   # the get action to route the user to all holidays requests by all users
+  get '/profiles/:profile_id/annuals/:annuals/:id/pending' => 'annuals#pending'
   
   
   # NOTES

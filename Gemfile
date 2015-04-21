@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,6 +32,9 @@ gem 'searchkick', '~> 0.8.7'
 
 # added bootstrap for design
 gem 'bootstrap-sass', '~> 3.3.4.1'
+
+# added google_charts for visualization
+gem "googlecharts", :require => "gchart"
 
 
 # Use ActiveModel has_secure_password

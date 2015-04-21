@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
@@ -83,6 +83,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    googlecharts (1.6.10)
     hashie (3.4.1)
     hike (1.2.3)
     i18n (0.7.0)
@@ -194,6 +195,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
+  googlecharts
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.2.1)

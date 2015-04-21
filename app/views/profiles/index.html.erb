@@ -1,17 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div>
+<!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+           <a class="navbar-brand" >All Listed Employees</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <%= form_tag search_profiles_path, method: :get, class: "navbar-form navbar-left", role: "search" do %>
+              <%= text_field_tag :search, params[:search], class: "form-control" %>
+              <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+              <% end %>
+              <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete%></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
-<h1>Listing Profiles</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Profile</th>
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Department</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Holiday basic</th>
+      <th>Holiday taken</th>
+      <th>Show</th>
+      <th>Admin</th>
     </tr>
   </thead>
 
@@ -24,32 +52,20 @@
         <td><%= profile.email %></td>
         <td><%= profile.phone %></td>
         <td><%= profile.department %></td>
-        <td><%= profile.user_id %></td>
-          <tr>
-            <td><%= link_to 'Show', profile %>
+        <td><%= profile.holbasic %></td>
+        <td><%= profile.annuals.count(:conditions => { :approval => true }) %></td>
+        <td><%= link_to 'Show', profile %></td>
+          <td>
+            <%= link_to 'Edit', edit_profile_path(profile) %>
             <% if current_user.admin? %>
-              <%= link_to 'Edit', edit_profile_path(profile) %>
               <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
             </td>
-          </tr>
-      </tr>
+
     <% end %>
   </tbody>
+  <td><%= link_to 'Annual Holidays (All users)', allann_path(@annuals), class: "btn btn-primary btn-sm" %>  
+  </td>
 </table>
 
-<br>
-
-<%= form_tag search_profiles_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %> <br>
-<%= link_to 'All Annuals', allann_path(@annuals) %>
-
-
+</div>

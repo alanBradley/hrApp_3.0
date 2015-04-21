@@ -1,6 +1,34 @@
 
 <div class="container">
 
+<!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+           <a class="navbar-brand" >All Holiday Requests</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <%= form_tag search_profiles_path, method: :get, class: "navbar-form navbar-left", role: "search" do %>
+              <%= text_field_tag :search, params[:search], class: "form-control" %>
+              <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+              <% end %>
+              <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete%></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
   
   <table class="table table-striped">
     <tr>
@@ -28,7 +56,10 @@
         
       </tr>
     <% end %>
+
+    
   </table>
 
 
 </div>
+

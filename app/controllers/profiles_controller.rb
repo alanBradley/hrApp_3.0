@@ -1,12 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_filter :ensure_admin, :only => [:destroy]
+  before_filter :ensure_admin, :only => [:destroy, :index]
 
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+      @profiles = Profile.all
   end
 
   # GET /profiles/1
@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
+    # makes availabe to the view a @profile instance variable by creating a new Profile:
     @profile = Profile.new
     @profile.user_id = current_user.id
   
@@ -82,7 +83,7 @@ class ProfilesController < ApplicationController
   
   def ensure_admin
     unless current_user && current_user.admin?
-    render :text => "Access Error Message", :status => :unauthorized
+    render :text => "You do not have admin level access to view this page", :status => :unauthorized
     end
   end
 
@@ -93,6 +94,8 @@ class ProfilesController < ApplicationController
       @Profiles = Profile.all
     end
   end
+
+
   
 
   private
@@ -103,6 +106,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:firstname, :lastname, :email, :phone, :department, :user_id, :avatar)
+      params.require(:profile).permit(:firstname, :lastname, :email, :phone, :department, :user_id, :avatar, :holbasic)
     end
 end

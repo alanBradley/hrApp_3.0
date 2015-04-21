@@ -1,5 +1,8 @@
 class AnnualsController < ApplicationController
+  require 'my_logger'
   before_filter :authenticate_user!
+  before_filter :ensure_admin, :only => [:allann]
+
 
 # GET /profiles/1/annuals
   def index
@@ -15,8 +18,14 @@ class AnnualsController < ApplicationController
     # URL /allann
   def allann
      @annuals = Annual.all.order("approval ASC")
+
   end
    
+  def pending
+    @profile = current_user
+
+     @annuals = Annual.where(approval: false)
+  end
 
   # GET /profiles/1/annuals/2
   def show
@@ -34,6 +43,7 @@ class AnnualsController < ApplicationController
 
     # Associate an annual object with profile 1
     @annual = @profile.annuals.build
+
   end
 
   # POST /profiles/1/annuals
@@ -50,6 +60,12 @@ class AnnualsController < ApplicationController
     else
       render :action => "new"
     end
+
+    # log for new holidays
+    # retrieve the instance/object of the MyLogger class
+    logger = MyLogger.instance
+    logger.logInformation("A new holiday has been requested by " + @profile.firstname + " " + @profile.lastname + " with Descritpion: " + @annual.annualType + " for the date: " + @annual.date.strftime("%a %m/%d/%Y").to_s )
+
   end
 
   # GET /profiles/1/annuals/2/edit
@@ -82,6 +98,12 @@ class AnnualsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to profile_annuals_path(@profile) }
       format.xml  { head :ok }
+    end
+  end
+
+    def ensure_admin
+    unless current_user && current_user.admin?
+    render :text => "You do not have admin level access to view this page", :status => :unauthorized
     end
   end
 

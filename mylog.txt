@@ -1,0 +1,10 @@
+A new holiday type has been requested: Christmas holidayfor the date 
+A new holiday has been requested with Descritpion: Second log holiday for the date 2015-04-28 00:00:00 UTC
+A new holiday has been requested by john with Descritpion: Second log holiday for the date 2015-04-28 00:00:00 UTC
+A new holiday has been requested by john with Descritpion: Second log holiday for the date Tue04/28/2015
+A new holiday has been requested by john with Descritpion: Second log holiday for the date Tue 04/28/2015
+A new holiday has been requested by john Bradley with Descritpion: Second log holiday for the date: Tue 04/28/2015
+A new holiday has been requested by John Bradley with Descritpion: New holidays for the date: Wed 04/22/2015
+A new holiday has been requested by John Bradley with Descritpion: New holiday for the date: Wed 04/22/2015
+A new holiday has been requested by Alan Bradley with Descritpion: New hols for the date: Wed 04/22/2015
+A new holiday has been requested by Alan Bradley with Descritpion: New holiday as John for the date: Wed 04/22/2015

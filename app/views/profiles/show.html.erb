@@ -37,57 +37,83 @@
 
       <!-- Left col -->
       <div class="col-sm-4">
-        <% if current_user == @profile.user %>
-          <h1> Welcome <%= @profile.firstname %> </h1>
-            <% else %>
-              <h3><%= @profile.firstname %><%= @profile.lastname %></h3>
-            <% end %>
-        <p><%= image_tag @profile.avatar.url(:medium) %></p>
-      </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title"><% if current_user == @profile.user %>
+              <h2> Welcome <%= @profile.firstname %> </h2>
+                <% else %>
+                  <h3><%= @profile.firstname %><%= @profile.lastname %></h3>
+                <% end %></h1>
+          </div>
+            <div class="panel-body">
+              <p><%= image_tag @profile.avatar.url(:medium) %></p>
+            </div>
+        </div>
+      </div> <!-- /Container left -->
+
 
       <!-- Right col -->
       <div class="col-sm-8">
-        <h1> Profile Details </h1>
-        <p> Trying to get some either<br> a) Name details and stuff or <br>
-          b) list of holidays applied for here
-        </p>
-        <p>
-          <strong>Firstname:</strong>
-          <%= @profile.firstname %>
-        </p>
 
-        <p>
-        <strong>Lastname:</strong>
-        <%= @profile.lastname %>
-        </p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title">Profile Details</h1>
+          </div>
+          <div class="panel-body">
+            <p>
+              <strong>Firstname:</strong>
+              <%= @profile.firstname %>
+            </p>
 
-        <p>
-        <strong>Email:</strong>
-        <%= @profile.email %>
-        </p>
+            <p>
+            <strong>Lastname:</strong>
+            <%= @profile.lastname %>
+            </p>
 
-        <p>
-        <strong>Phone:</strong>
-        <%= @profile.phone %>
-        </p>
+            <p>
+            <strong>Email:</strong>
+            <%= @profile.email %>
+            </p>
 
-        <p>
-        <strong>Department:</strong>
-        <%= @profile.department %>
-        </p>
+            <p>
+            <strong>Phone:</strong>
+            <%= @profile.phone %>
+            </p>
 
-        <p>
-        <strong>User:</strong>
-        <%= @profile.user_id %>
-        </p>
-        <p>
+            <p>
+            <strong>Department:</strong>
+            <%= @profile.department %>
+            </p>
+
+          </div>
+
+<!-- bar chart layout to show how many days left for the employee -->
+  <img src="
+  <%= require 'gchart'
+  Gchart.bar(
+              :size => '200x60',
+              :data => [[@profile.annuals.count], [25]], 
+              :orientation => 'horizontal', 
+              :bar_colors => ['eae8e8', '00FF00'],
+              :axis_with_labels => ['x'],
+              :max_value => 25,
+              :min_value => 0,
+              :legend => ['Holiday taken','Holiday left'])
+  %>
+" />
+
+        </div>
+
+        
           <% if current_user == @profile.user %>
           <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-lg btn-default"%> 
-          <%= link_to 'Delete Profile', profile_path(@profile), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-lg btn-default" %>
+            <% if current_user.admin? %>
+              <%= link_to 'Delete Profile', profile_path(@profile), :confirm => 'Are you sure?', :method => :delete, class: "btn btn-lg btn-default" %>
+              <% end %>
           <% end %>
         </p>
 
-      </div>
+      </div> <!-- /container right-->
     </div> <!-- /container main-->
 
 
