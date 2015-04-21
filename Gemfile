@@ -46,7 +46,7 @@ gem "googlecharts", :require => "gchart"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
+  gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -54,11 +54,12 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Use sqlite3 as the database for Active Record
-  # gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :production do
 	gem 'pg', '~> 0.18.1'
+	gem 'rails_12factor', '0.0.2'
 end
 
 
