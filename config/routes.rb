@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     # the get action to route the user to all holidays requests by all users
   get '/pending' => 'annuals#pending'
   
+    # the get action to route the user to all holidays requests by all users
+  get '/approved' => 'annuals#approved'
+
    # the get action to route the user to all holidays requests by all users
   get '/profiles/:profile_id/annuals/:annuals/:id/pending' => 'annuals#pending'
   

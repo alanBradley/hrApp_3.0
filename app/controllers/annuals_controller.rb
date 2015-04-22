@@ -27,6 +27,12 @@ class AnnualsController < ApplicationController
      @annuals = Annual.where(approval: false)
   end
 
+  def approved
+    @profile = current_user
+
+     @annuals = Annual.where(approval: true)
+  end
+
   # GET /profiles/1/annuals/2
   def show
     @profile = Profile.find(params[:profile_id])

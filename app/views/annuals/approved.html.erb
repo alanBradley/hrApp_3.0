@@ -1,0 +1,29 @@
+<table class="table table-striped">
+    <tr>
+      <th>FIRST NAME</th>	
+      <th>SURNAME NAME</th>	
+      <th>HOLIDAY DESCRIPTION</th>
+      <th>DATE</th>
+      <th>STATUS</th>
+    </tr>
+
+    <% @annuals.each do |annual| %>
+      <tr>
+      	<td><%= annual.profile.firstname %></td>
+      	<td><%= annual.profile.lastname %></td>
+        <td><%= annual.annualType %></td>
+        <td><%= annual.date.strftime("%v") %></td>   
+        <td>
+            <% if annual.approval == true %>
+              Approved
+            <% else %>
+              Pending
+            <%end%>
+        </td>
+
+        
+      </tr>
+    <% end %>
+
+    
+  </table>
